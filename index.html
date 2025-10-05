@@ -166,7 +166,7 @@
 
     <script>
       $(document).ready(function () {
-        const totalPages = 28; // Total halaman
+        const totalPages = 26; // Total halaman
         const magazine = $("#magazine");
 
         // Generate halaman otomatis
@@ -176,7 +176,7 @@
           page.style.backgroundImage = `url(pages_new/${pageNum}.jpg)`;
 
           // ✅ Tambahkan video di halaman 10, 15, 18
-          if ([10, 16, 19].includes(i)) {
+          if ([10, 15, 18].includes(i)) {
             const videoWrapper = document.createElement("div");
             videoWrapper.style.cssText = `
               position: absolute;
@@ -192,8 +192,8 @@
 
             const videoFile = {
               10: "video-10.mp4",
-              16: "video-16.mp4",
-              19: "video-18.mp4",
+              15: "video-16.mp4",
+              18: "video-18.mp4",
             }[i];
 
             videoWrapper.innerHTML = `
@@ -210,6 +210,28 @@
             linkDiv.className = "custom-link-box";
             linkDiv.innerText = "https://forms.gle/s1xmCwbcv1b2DAYr9";
             page.appendChild(linkDiv);
+          }
+          if (i === 25) {
+            const Barcode = document.createElement("div");
+            Barcode.style.cssText = `
+              position: absolute;
+              top: 55%;
+              left: 15%;
+              width: 80%;
+              margin-left:5%;
+              margin-right:auto;
+              height:100px;
+              transform: translateY(-50%);
+              z-index: 1;
+            `;
+
+            const BarcodeFile = {
+              25: "27.jpg",
+            }[i];
+            Barcode.innerHTML = `
+            <img src="assets/${BarcodeFile}" style="width:200px;height:200px">;
+            `;
+            page.appendChild(Barcode);
           }
 
           magazine.append(page);
